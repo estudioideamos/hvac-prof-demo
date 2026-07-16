@@ -1663,11 +1663,21 @@ h3 {
   .inner-hero-grid {
     min-height: auto;
     padding-bottom: 76px;
+    justify-items: start;
   }
 
   .sector-strip article {
     flex: 1 1 calc(50% - 1px);
     padding: 20px;
+  }
+
+  .inner-hero-copy {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .inner-hero-copy p:last-child {
+    max-width: 34rem;
   }
 
   .inner-hero-aside {
@@ -1840,14 +1850,15 @@ h3 {
   }
 
   .hero-home-slider,
-  .hero-slider,
-  .hero-slide-grid {
-    min-height: auto;
+  .hero-slider {
+    min-height: 100svh;
   }
 
   .hero-slide-grid {
+    min-height: 100svh;
     padding-top: 124px;
     padding-bottom: 108px;
+    align-items: center;
   }
 
   .hero-slider-ui {
@@ -1990,6 +2001,7 @@ h3 {
 
   .hero-slide-grid {
     width: min(calc(100% - 20px), var(--max-width));
+    min-height: 100svh;
     padding-top: 116px;
     padding-bottom: 96px;
   }
@@ -2002,11 +2014,22 @@ h3 {
     width: min(calc(100% - 20px), var(--max-width));
     padding-top: 118px;
     padding-bottom: 54px;
+    justify-items: start;
+  }
+
+  .inner-hero-copy {
+    width: 100%;
+    max-width: 100%;
   }
 
   .inner-hero-copy h1 {
-    max-width: 11.2ch;
-    font-size: clamp(2rem, 8.6vw, 3rem);
+    max-width: 100%;
+    font-size: clamp(1.92rem, 8.8vw, 2.85rem);
+    line-height: 0.98;
+  }
+
+  .inner-hero-copy p:last-child {
+    max-width: 100%;
   }
 
   .inner-hero-aside .stats-row {
@@ -2034,8 +2057,8 @@ h3 {
   .hero-slide-title,
   .hero-slide-copy h1,
   .hero-slide-copy h2 {
-    max-width: 11ch;
-    font-size: clamp(2rem, 8.8vw, 3.2rem);
+    max-width: 10.6ch;
+    font-size: clamp(1.96rem, 9.1vw, 3.05rem);
   }
 
   .hero-slider-progress {
