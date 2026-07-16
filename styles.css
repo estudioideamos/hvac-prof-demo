@@ -888,11 +888,12 @@ h3 {
 }
 
 .inner-hero-copy {
-  max-width: 700px;
+  width: min(45vw, 780px);
+  max-width: none;
 }
 
 .inner-hero-copy h1 {
-  max-width: 10.2ch;
+  max-width: 100%;
   font-size: clamp(2.35rem, 4.7vw, 4.25rem);
 }
 
