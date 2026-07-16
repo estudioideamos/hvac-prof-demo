@@ -936,9 +936,9 @@ h3 {
   display: grid;
   grid-template-columns: 70px minmax(0, 1fr);
   align-items: start;
-  gap: 16px;
-  min-height: 122px;
-  padding: 18px 20px;
+  gap: 14px;
+  min-height: 114px;
+  padding: 17px 18px;
   border-radius: 22px;
   border: 1px solid rgba(138, 240, 255, 0.16);
   background:
@@ -980,15 +980,15 @@ h3 {
 }
 
 .inner-hero-aside .stats-row strong {
-  font-size: clamp(1.55rem, 2vw, 1.95rem);
-  line-height: 0.96;
+  font-size: clamp(1.34rem, 1.72vw, 1.68rem);
+  line-height: 0.98;
   letter-spacing: 0;
 }
 
 .inner-hero-aside .stats-row span {
-  margin-top: 8px;
-  font-size: 0.99rem;
-  line-height: 1.48;
+  margin-top: 6px;
+  font-size: 0.95rem;
+  line-height: 1.42;
   max-width: 24ch;
 }
 
