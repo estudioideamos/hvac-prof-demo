@@ -3,11 +3,20 @@ const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelectorAll(".site-nav a");
 const revealItems = document.querySelectorAll(".reveal");
 
+const syncMobileMenuState = (isOpen) => {
+  if (!header || !navToggle) {
+    return;
+  }
+
+  navToggle.setAttribute("aria-expanded", String(isOpen));
+  header.classList.toggle("is-open", isOpen);
+  document.body.classList.toggle("menu-open", isOpen);
+};
+
 if (navToggle && header) {
   navToggle.addEventListener("click", () => {
     const expanded = navToggle.getAttribute("aria-expanded") === "true";
-    navToggle.setAttribute("aria-expanded", String(!expanded));
-    header.classList.toggle("is-open", !expanded);
+    syncMobileMenuState(!expanded);
   });
 }
 
@@ -17,9 +26,14 @@ navLinks.forEach((link) => {
       return;
     }
 
-    header.classList.remove("is-open");
-    navToggle.setAttribute("aria-expanded", "false");
+    syncMobileMenuState(false);
   });
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 920) {
+    syncMobileMenuState(false);
+  }
 });
 
 const observer = new IntersectionObserver(
