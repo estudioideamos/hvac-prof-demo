@@ -1,0 +1,46 @@
+<svg width="560" height="320" viewBox="0 0 560 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-zc" x1="88" y1="38" x2="394" y2="236" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#153139"/>
+      <stop offset="1" stop-color="#09161B"/>
+    </linearGradient>
+    <linearGradient id="duct-top-zc" x1="124" y1="88" x2="298" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBFEFF"/>
+      <stop offset="1" stop-color="#B5CCD2"/>
+    </linearGradient>
+    <linearGradient id="duct-side-zc" x1="100" y1="112" x2="124" y2="230" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D5E8EC"/>
+      <stop offset="1" stop-color="#7F99A0"/>
+    </linearGradient>
+    <linearGradient id="duct-front-zc" x1="82" y1="124" x2="132" y2="198" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FCFD"/>
+      <stop offset="1" stop-color="#9CB7BE"/>
+    </linearGradient>
+    <radialGradient id="halo-zc" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(402 98) rotate(90) scale(70)">
+      <stop stop-color="#50D9F3" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#50D9F3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="560" height="320" rx="28" fill="url(#bg-zc)"/>
+  <rect x="1" y="1" width="558" height="318" rx="27" stroke="#1E4C56" stroke-opacity=".85"/>
+  <path d="M62 214 154 154 288 154 376 102 376 190 282 246 150 246 62 214Z" fill="url(#duct-side-zc)"/>
+  <path d="M62 102 154 48 288 48 376 102 282 154 150 154 62 102Z" fill="url(#duct-top-zc)"/>
+  <path d="M62 102V214L150 266V154L62 102Z" fill="url(#duct-side-zc)"/>
+  <path d="M62 102H150V154H62V102Z" fill="url(#duct-front-zc)"/>
+  <path d="M74 116H138V140H74V116Z" stroke="#7D969D" stroke-width="3"/>
+  <path d="M74 116 62 102M138 116 150 102M74 140 62 154M138 140 150 154" stroke="#A0B8BE" stroke-width="3"/>
+  <path d="M150 154V266L282 266V154" stroke="#7A9198" stroke-width="3"/>
+  <path d="M150 154V48M194 128V72M238 128V72M282 154V48M326 128V72" stroke="#96AFB6" stroke-width="3"/>
+  <path d="M106 128V242M194 128V242M238 128V242M326 128V242" stroke="#9DB6BC" stroke-width="2.5"/>
+  <circle cx="402" cy="98" r="70" fill="url(#halo-zc)"/>
+  <circle cx="402" cy="98" r="68" fill="#081519" stroke="#1A7BC1" stroke-width="6"/>
+  <path d="M366 48H422L446 70V144H390L366 120V48Z" fill="#EEF7FA"/>
+  <path d="M382 64H426" stroke="#7A8D93" stroke-width="4"/>
+  <path d="M382 64V136" stroke="#74888E" stroke-width="4"/>
+  <path d="M426 64V110" stroke="#74888E" stroke-width="4"/>
+  <path d="M390 136H446" stroke="#7A8D93" stroke-width="4"/>
+  <path d="M408 48V136" stroke="#324F57" stroke-width="5"/>
+  <path d="M392 82H430" stroke="#8AF0FF" stroke-width="3"/>
+  <path d="M150 154H282" stroke="#1A7BC1" stroke-width="4" stroke-linecap="round"/>
+  <path d="M282 154 330 126" stroke="#1A7BC1" stroke-width="4" stroke-linecap="round"/>
+</svg>

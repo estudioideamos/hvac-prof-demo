@@ -750,6 +750,25 @@ h3 {
   margin-top: 16px;
 }
 
+.union-visual {
+  overflow: hidden;
+  margin: -6px -6px 18px;
+  border: 1px solid rgba(138, 240, 255, 0.14);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(56, 211, 230, 0.08), transparent 20%),
+    linear-gradient(180deg, rgba(12, 31, 37, 0.96), rgba(6, 17, 21, 0.96));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 16px 36px rgba(0, 0, 0, 0.16);
+}
+
+.union-visual img {
+  width: 100%;
+  aspect-ratio: 1.72 / 1;
+  object-fit: cover;
+}
+
 .card-index {
   margin-bottom: 14px;
 }

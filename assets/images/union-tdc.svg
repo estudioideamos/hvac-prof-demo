@@ -1,0 +1,48 @@
+<svg width="560" height="320" viewBox="0 0 560 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-tdc" x1="74" y1="54" x2="408" y2="236" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#16343C"/>
+      <stop offset="1" stop-color="#09161B"/>
+    </linearGradient>
+    <linearGradient id="duct-top-tdc" x1="122" y1="92" x2="290" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9FEFF"/>
+      <stop offset="1" stop-color="#A9C6CC"/>
+    </linearGradient>
+    <linearGradient id="duct-side-tdc" x1="110" y1="98" x2="126" y2="224" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D5E7EB"/>
+      <stop offset="1" stop-color="#7E99A0"/>
+    </linearGradient>
+    <linearGradient id="duct-front-tdc" x1="82" y1="128" x2="134" y2="198" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7FBFD"/>
+      <stop offset="1" stop-color="#9DB7BE"/>
+    </linearGradient>
+    <radialGradient id="halo-tdc" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(390 106) rotate(90) scale(72)">
+      <stop stop-color="#50D9F3" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#50D9F3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="560" height="320" rx="28" fill="url(#bg-tdc)"/>
+  <rect x="1" y="1" width="558" height="318" rx="27" stroke="#1E4C56" stroke-opacity=".85"/>
+  <path d="M58 212 154 150 288 150 372 98 372 188 278 242 146 242 58 212Z" fill="url(#duct-side-tdc)"/>
+  <path d="M58 98 152 44 286 44 372 98 278 150 144 150 58 98Z" fill="url(#duct-top-tdc)"/>
+  <path d="M58 98V212L144 262V150L58 98Z" fill="url(#duct-side-tdc)"/>
+  <path d="M144 150V262L278 262V150" stroke="#7A9198" stroke-width="3"/>
+  <path d="M144 150V44M188 124V68M232 124V68M278 150V44M322 124V68" stroke="#94ADB4" stroke-width="3"/>
+  <path d="M100 124V238M188 124V238M232 124V238M322 124V238" stroke="#9AB2B9" stroke-width="2.5"/>
+  <path d="M58 98 144 150M58 212 144 262" stroke="#8099A0" stroke-width="3"/>
+  <path d="M58 98H144V150H58V98Z" fill="url(#duct-front-tdc)"/>
+  <path d="M70 112H132V136H70V112Z" stroke="#7D969D" stroke-width="3"/>
+  <path d="M70 112 58 98M132 112 144 98M70 136 58 150M132 136 144 150" stroke="#9EB7BD" stroke-width="3"/>
+  <circle cx="388" cy="106" r="72" fill="url(#halo-tdc)"/>
+  <circle cx="388" cy="106" r="70" fill="#081519" stroke="#1A7BC1" stroke-width="6"/>
+  <path d="M356 54H400L422 74V160H368L356 146V54Z" fill="#EEF7FA" fill-opacity=".96"/>
+  <path d="M366 64H398V148H366V64Z" fill="#BFC9CD"/>
+  <path d="M398 64 412 76V148H398V64Z" fill="#8E9DA3"/>
+  <path d="M366 64 350 74V146L366 148V64Z" fill="#D6DFE2"/>
+  <path d="M374 76H392V148H374V76Z" fill="#203E46"/>
+  <path d="M374 98H406" stroke="#8AF0FF" stroke-width="3"/>
+  <path d="M406 78V146" stroke="#5C6F74" stroke-width="4"/>
+  <path d="M358 120 388 92 410 120" stroke="#18353D" stroke-width="4" stroke-linecap="round"/>
+  <path d="M145 148H278" stroke="#1A7BC1" stroke-width="4" stroke-linecap="round"/>
+  <path d="M278 148 319 123" stroke="#1A7BC1" stroke-width="4" stroke-linecap="round"/>
+</svg>
