@@ -521,8 +521,8 @@ h3 {
   font-size: 1.52rem;
 }
 
-.hero-metrics span,
-.stats-row span {
+.hero-metrics article > span,
+.stats-row article > span:not(.hero-aside-icon) {
   display: block;
   margin-top: 6px;
   font-size: 0.92rem;
@@ -1294,7 +1294,7 @@ h3 {
   stroke-linejoin: round;
 }
 
-.home-contact-item span {
+.home-contact-item > span:not(.home-contact-icon) {
   display: block;
   color: var(--accent);
   font-size: 0.78rem;
