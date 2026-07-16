@@ -948,6 +948,7 @@ h3 {
 }
 
 .inner-hero-aside .stats-row article {
+  flex: none;
   display: grid;
   grid-template-columns: 58px minmax(0, 1fr);
   align-items: center;
