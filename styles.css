@@ -937,7 +937,7 @@ h3 {
 
 .inner-hero-aside {
   width: 100%;
-  max-width: 404px;
+  max-width: 418px;
   justify-self: end;
 }
 
@@ -1001,18 +1001,19 @@ h3 {
 
 .inner-hero-aside .stats-row strong {
   display: block;
-  max-width: 13ch;
-  font-size: clamp(1rem, 1.12vw, 1.14rem);
-  line-height: 1.04;
-  letter-spacing: 0.018em;
+  max-width: none;
+  font-size: clamp(0.84rem, 0.9vw, 0.96rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
   text-transform: uppercase;
 }
 
 .inner-hero-aside .stats-row span {
   margin-top: 0;
   font-size: 0.84rem;
-  line-height: 1.34;
-  max-width: 26ch;
+  line-height: 1.28;
+  max-width: 28ch;
 }
 
 .stats-row article {
@@ -2093,7 +2094,7 @@ h3 {
   }
 
   .inner-hero-aside .stats-row strong {
-    max-width: 100%;
+    white-space: normal;
     font-size: 0.98rem;
   }
 
