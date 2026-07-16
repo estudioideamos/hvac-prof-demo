@@ -937,7 +937,7 @@ h3 {
 
 .inner-hero-aside {
   width: 100%;
-  max-width: 418px;
+  max-width: 408px;
   justify-self: end;
 }
 
@@ -949,12 +949,12 @@ h3 {
 
 .inner-hero-aside .stats-row article {
   display: grid;
-  grid-template-columns: 64px minmax(0, 1fr);
+  grid-template-columns: 58px minmax(0, 1fr);
   align-items: center;
-  gap: 14px;
-  min-height: 112px;
-  padding: 16px 20px;
-  border-radius: 22px;
+  gap: 12px;
+  min-height: 96px;
+  padding: 12px 16px;
+  border-radius: 20px;
   border: 1px solid rgba(138, 240, 255, 0.16);
   background:
     linear-gradient(180deg, rgba(10, 27, 33, 0.88), rgba(6, 17, 21, 0.92));
@@ -967,9 +967,9 @@ h3 {
 .hero-aside-icon {
   display: grid;
   place-items: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 22px;
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
   border: 1px solid rgba(138, 240, 255, 0.18);
   background:
     radial-gradient(circle at 50% 34%, rgba(56, 211, 230, 0.26), transparent 54%),
@@ -981,8 +981,8 @@ h3 {
 }
 
 .hero-aside-icon svg {
-  width: 31px;
-  height: 31px;
+  width: 26px;
+  height: 26px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.7;
@@ -995,14 +995,14 @@ h3 {
   min-width: 0;
   flex-direction: column;
   justify-content: center;
-  gap: 6px;
+  gap: 4px;
   align-self: center;
 }
 
 .inner-hero-aside .stats-row strong {
   display: block;
   max-width: none;
-  font-size: clamp(0.84rem, 0.9vw, 0.96rem);
+  font-size: clamp(0.82rem, 0.86vw, 0.92rem);
   line-height: 1;
   letter-spacing: 0.01em;
   white-space: nowrap;
@@ -1011,8 +1011,8 @@ h3 {
 
 .inner-hero-aside .stats-row span {
   margin-top: 0;
-  font-size: 0.84rem;
-  line-height: 1.28;
+  font-size: 0.8rem;
+  line-height: 1.22;
   max-width: 28ch;
 }
 
