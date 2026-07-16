@@ -244,8 +244,8 @@ h3 {
 
 .nav-toggle {
   display: none;
-  grid-template-columns: 1fr;
-  gap: 5px;
+  position: relative;
+  place-items: center;
   width: 46px;
   height: 46px;
   padding: 0;
@@ -255,11 +255,26 @@ h3 {
 }
 
 .nav-toggle span {
+  position: absolute;
   width: 18px;
   height: 2px;
-  margin: auto;
+  left: 50%;
   background: var(--text);
-  transition: transform 180ms ease;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.nav-toggle span:nth-child(1) {
+  top: 16px;
+}
+
+.nav-toggle span:nth-child(2) {
+  top: 22px;
+}
+
+.nav-toggle span:nth-child(3) {
+  top: 28px;
 }
 
 .hero,
@@ -1790,11 +1805,15 @@ h3 {
   }
 
   .site-header.is-open .nav-toggle span:first-child {
-    transform: translateY(3.5px) rotate(45deg);
+    transform: translateX(-50%) translateY(6px) rotate(45deg);
+  }
+
+  .site-header.is-open .nav-toggle span:nth-child(2) {
+    opacity: 0;
   }
 
   .site-header.is-open .nav-toggle span:last-child {
-    transform: translateY(-3.5px) rotate(-45deg);
+    transform: translateX(-50%) translateY(-6px) rotate(-45deg);
   }
 
   .section {
