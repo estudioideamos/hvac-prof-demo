@@ -1951,6 +1951,8 @@ h3 {
   .site-footer {
     grid-template-columns: 1fr;
     gap: 24px;
+    justify-items: center;
+    text-align: center;
   }
 
   .project-gallery-grid {
@@ -1977,10 +1979,30 @@ h3 {
 
   .footer-brand {
     grid-column: auto;
+    align-items: center;
+    justify-items: center;
+    margin-inline: auto;
+  }
+
+  .footer-nav-group,
+  .footer-meta {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .footer-links,
+  .footer-socials {
+    justify-content: center;
+  }
+
+  .footer-contact-line,
+  .footer-bottom {
+    text-align: center;
   }
 
   .footer-bottom {
     flex-direction: column;
+    align-items: center;
   }
 
   .section {
