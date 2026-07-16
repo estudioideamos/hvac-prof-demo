@@ -373,7 +373,7 @@ h3 {
 }
 
 .hero-slide-copy {
-  width: min(50vw, 780px);
+  width: min(45vw, 780px);
   max-width: none;
   transform: translateY(28px);
   opacity: 0;
