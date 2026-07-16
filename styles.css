@@ -373,7 +373,7 @@ h3 {
 }
 
 .hero-slide-copy {
-  width: min(50vw, 760px);
+  width: min(50vw, 780px);
   max-width: none;
   transform: translateY(28px);
   opacity: 0;
@@ -387,7 +387,11 @@ h3 {
 .hero-slide-copy h1,
 .hero-slide-copy h2 {
   max-width: 100%;
-  font-size: clamp(2.15rem, 4.2vw, 3.9rem);
+  font-size: clamp(2.25rem, 4.45vw, 4.12rem);
+}
+
+.hero-slide-title {
+  max-width: 14.1ch;
 }
 
 .hero-slide-copy .hero-text {
