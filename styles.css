@@ -2289,9 +2289,17 @@ body.lightbox-open {
 
   .site-footer {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 34px;
     justify-items: center;
     text-align: center;
+  }
+
+  .footer-nav-group {
+    margin-top: 10px;
+  }
+
+  .footer-meta {
+    margin-top: 12px;
   }
 
   .project-gallery-grid {
