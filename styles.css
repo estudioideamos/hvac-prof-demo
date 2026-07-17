@@ -1519,6 +1519,10 @@ h3 {
     linear-gradient(180deg, rgba(5, 17, 20, 0.98), rgba(8, 24, 29, 0.96));
 }
 
+.cta-panel h2 + p {
+  margin-top: 18px;
+}
+
 .cta-actions {
   gap: 14px;
   flex-wrap: wrap;
