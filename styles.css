@@ -402,7 +402,7 @@ h3 {
 .hero-slide-copy h1,
 .hero-slide-copy h2 {
   max-width: 100%;
-  font-size: clamp(2.25rem, 4.45vw, 4.12rem);
+  font-size: clamp(2.18rem, 4.18vw, 3.92rem);
 }
 
 .hero-slide-title {
@@ -928,7 +928,7 @@ h3 {
 
 .inner-hero-copy h1 {
   max-width: 100%;
-  font-size: clamp(2.35rem, 4.7vw, 4.25rem);
+  font-size: clamp(2.26rem, 4.38vw, 4rem);
 }
 
 .inner-hero-copy p:last-child {
