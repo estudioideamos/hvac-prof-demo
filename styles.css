@@ -2140,7 +2140,7 @@ h3 {
   .hero-slide-title,
   .hero-slide-copy h1,
   .hero-slide-copy h2 {
-    max-width: 10.6ch;
+    max-width: 100%;
     font-size: clamp(1.96rem, 9.1vw, 3.05rem);
   }
 
