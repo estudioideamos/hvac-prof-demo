@@ -1443,6 +1443,34 @@ h3 {
   transform: scale(1.03);
 }
 
+.piece-gallery-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.piece-gallery-grid .project-gallery-media {
+  aspect-ratio: 3 / 2;
+  padding: 18px;
+  background: linear-gradient(180deg, #ffffff, #eef5f8);
+}
+
+.piece-gallery-grid .project-gallery-media img {
+  object-fit: contain;
+  transform: none;
+}
+
+.piece-gallery-grid .project-gallery-card:hover .project-gallery-media img {
+  transform: none;
+}
+
+.piece-gallery-grid .project-gallery-copy {
+  padding: 16px 18px 18px;
+}
+
+.piece-gallery-grid .project-gallery-copy h3 {
+  font-size: clamp(1.28rem, 1.35vw, 1.55rem);
+}
+
 .project-gallery-copy {
   padding: 18px 20px 20px;
 }
