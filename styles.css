@@ -1907,17 +1907,18 @@ h3 {
   }
 
   .hero-slide-copy {
-    width: 100%;
+    width: min(100%, 34ch);
+    max-width: 34ch;
   }
 
   .hero-slide-copy h1,
   .hero-slide-copy h2 {
-    max-width: 11.4ch;
+    max-width: 100%;
     font-size: clamp(2.1rem, 6.8vw, 3.35rem);
   }
 
   .hero-slide-copy .hero-text {
-    max-width: 34ch;
+    max-width: 100%;
     font-size: 0.96rem;
   }
 
@@ -2070,19 +2071,24 @@ h3 {
   }
 
   .hero-slide-copy {
-    width: 100%;
+    width: min(100%, 34ch);
+    max-width: 34ch;
+    margin-inline: auto;
+    text-align: center;
   }
 
   .inner-hero-grid {
     width: min(calc(100% - 20px), var(--max-width));
     padding-top: 118px;
     padding-bottom: 54px;
-    justify-items: start;
+    justify-items: center;
   }
 
   .inner-hero-copy {
-    width: 100%;
-    max-width: 100%;
+    width: min(100%, 34ch);
+    max-width: 34ch;
+    margin-inline: auto;
+    text-align: center;
   }
 
   .inner-hero-copy h1 {
@@ -2093,6 +2099,10 @@ h3 {
 
   .inner-hero-copy p:last-child {
     max-width: 100%;
+  }
+
+  .hero-actions {
+    justify-content: center;
   }
 
   .inner-hero-aside .stats-row {
