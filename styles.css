@@ -788,6 +788,63 @@ h3 {
   object-fit: cover;
 }
 
+.union-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
+  gap: 18px;
+  margin-top: 34px;
+  align-items: stretch;
+}
+
+.union-detail-visual,
+.union-guidance-card {
+  height: 100%;
+}
+
+.union-guidance-card {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+}
+
+.union-guidance-card .eyebrow {
+  margin-bottom: 0;
+}
+
+.union-guidance-lead {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.04rem;
+  line-height: 1.55;
+}
+
+.union-guidance-card .feature-list {
+  margin-top: 0;
+}
+
+.union-guidance-points {
+  display: grid;
+  gap: 14px;
+}
+
+.union-guidance-point {
+  padding-top: 14px;
+  border-top: 1px solid rgba(126, 230, 242, 0.12);
+}
+
+.union-guidance-label {
+  display: block;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.union-guidance-point p {
+  margin-top: 8px;
+}
+
 .union-visual img,
 .project-gallery-media img {
   cursor: zoom-in;
@@ -1809,6 +1866,10 @@ body.lightbox-open {
   .inner-hero-aside {
     max-width: none;
     justify-self: stretch;
+  }
+
+  .union-detail-layout {
+    grid-template-columns: 1fr;
   }
 
   .inner-hero-aside .stats-row {
