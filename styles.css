@@ -2087,6 +2087,14 @@ body.lightbox-open {
     grid-template-columns: 1fr;
   }
 
+  .home-contact-item {
+    text-align: center;
+  }
+
+  .home-contact-icon {
+    margin-inline: auto;
+  }
+
   .form-row.two-columns,
   .form-actions {
     grid-template-columns: 1fr;
