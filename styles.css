@@ -2353,6 +2353,11 @@ body.lightbox-open {
     grid-template-columns: 1fr;
   }
 
+  .info-split {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
   .home-contact-item {
     display: grid;
     justify-items: center;
