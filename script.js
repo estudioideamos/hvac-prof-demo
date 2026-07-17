@@ -1,3 +1,5 @@
+// HVAC PROF | Interacciones del sitio desarrolladas por Estudio Ideamos.
+
 const header = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelectorAll(".site-nav a");
