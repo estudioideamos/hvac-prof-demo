@@ -2051,6 +2051,21 @@ h3 {
     padding-top: 72px;
   }
 
+  .section-heading,
+  .cta-panel {
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .section-heading p:last-child,
+  .cta-panel p {
+    margin-inline: auto;
+  }
+
+  .cta-actions {
+    justify-content: center;
+  }
+
   .preview-card,
   .about-panel,
   .quote-card,
