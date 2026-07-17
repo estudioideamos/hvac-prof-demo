@@ -495,7 +495,7 @@ h3 {
 
 .hero-text,
 .inner-hero-copy p:last-child {
-  margin-top: 30px;
+  margin-top: 38px;
 }
 
 .section-heading p:last-child {
@@ -2208,6 +2208,11 @@ body.lightbox-open {
 
   .inner-hero-copy p:last-child {
     max-width: 100%;
+  }
+
+  .hero-text,
+  .inner-hero-copy p:last-child {
+    margin-top: 42px;
   }
 
   .hero-actions {
