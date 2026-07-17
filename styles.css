@@ -1186,6 +1186,21 @@ h3 {
   appearance: none;
 }
 
+.form-field select {
+  background-color: #16252b;
+  color: #f4fbfd;
+}
+
+.form-field select option {
+  background-color: #ffffff;
+  color: #0d1b20;
+}
+
+.form-field select option:checked {
+  background-color: #2d6cdf;
+  color: #ffffff;
+}
+
 .form-field textarea {
   min-height: 150px;
   resize: vertical;
