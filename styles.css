@@ -2088,11 +2088,21 @@ body.lightbox-open {
   }
 
   .home-contact-item {
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    gap: 0;
     text-align: center;
   }
 
   .home-contact-icon {
     margin-inline: auto;
+  }
+
+  .home-contact-item > span:not(.home-contact-icon),
+  .home-contact-item strong {
+    width: 100%;
+    text-align: center;
   }
 
   .form-row.two-columns,
