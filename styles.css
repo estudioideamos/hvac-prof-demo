@@ -494,6 +494,7 @@ h3 {
 }
 
 .hero-text,
+.inner-hero-copy h1 + p,
 .inner-hero-copy p:last-child {
   margin-top: 43px;
 }
@@ -945,6 +946,7 @@ h3 {
   font-size: clamp(2.26rem, 4.38vw, 4rem);
 }
 
+.inner-hero-copy h1 + p,
 .inner-hero-copy p:last-child {
   max-width: 48ch;
 }
@@ -1799,6 +1801,7 @@ body.lightbox-open {
     max-width: 100%;
   }
 
+  .inner-hero-copy h1 + p,
   .inner-hero-copy p:last-child {
     max-width: 34rem;
   }
@@ -2216,11 +2219,13 @@ body.lightbox-open {
     line-height: 0.98;
   }
 
+  .inner-hero-copy h1 + p,
   .inner-hero-copy p:last-child {
     max-width: 100%;
   }
 
   .hero-text,
+  .inner-hero-copy h1 + p,
   .inner-hero-copy p:last-child {
     margin-top: 47px;
   }
