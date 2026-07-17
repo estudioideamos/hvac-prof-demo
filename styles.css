@@ -787,6 +787,17 @@ h3 {
   object-fit: cover;
 }
 
+.union-visual img,
+.project-gallery-media img {
+  cursor: zoom-in;
+}
+
+.union-visual img:focus-visible,
+.project-gallery-media img:focus-visible {
+  outline: 2px solid rgba(138, 240, 255, 0.84);
+  outline-offset: 4px;
+}
+
 .card-index {
   margin-bottom: 14px;
 }
@@ -1601,6 +1612,78 @@ h3 {
   fill: currentColor;
 }
 
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.image-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 9, 13, 0.88);
+  backdrop-filter: blur(14px);
+}
+
+.image-lightbox-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1180px);
+  display: grid;
+  gap: 14px;
+}
+
+.image-lightbox-close {
+  justify-self: end;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(138, 240, 255, 0.18);
+  border-radius: 50%;
+  background: rgba(6, 18, 22, 0.84);
+  color: var(--text);
+  font: inherit;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.image-lightbox-frame {
+  overflow: hidden;
+  border: 1px solid rgba(138, 240, 255, 0.18);
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(10, 27, 33, 0.94), rgba(6, 17, 21, 0.96));
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.38);
+}
+
+.image-lightbox-frame img {
+  display: block;
+  width: 100%;
+  max-height: min(76vh, 980px);
+  object-fit: contain;
+  background: #041015;
+}
+
+.image-lightbox-caption {
+  margin: 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -2206,5 +2289,22 @@ h3 {
   .whatsapp-float-icon {
     width: 38px;
     height: 38px;
+  }
+
+  .image-lightbox {
+    padding: 18px;
+  }
+
+  .image-lightbox-dialog {
+    width: min(100%, 720px);
+  }
+
+  .image-lightbox-close {
+    width: 42px;
+    height: 42px;
+  }
+
+  .image-lightbox-frame {
+    border-radius: 22px;
   }
 }
