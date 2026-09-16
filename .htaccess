@@ -1,0 +1,84 @@
+# HVAC PROF | Configuracion de produccion desarrollada por Estudio Ideamos.
+
+Options -Indexes
+ServerSignature Off
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Private and development paths never belong to the public site.
+  RewriteRule (^|/)\.(?!well-known(?:/|$)) - [F,L]
+  RewriteRule ^(?:tools|node_modules|repositories)(?:/|$) - [F,L,NC]
+  RewriteCond %{REQUEST_METHOD} !^(GET|HEAD|POST)$
+  RewriteRule ^ - [R=405,L]
+  RewriteCond %{THE_REQUEST} \s/+index\.html(?:[?\s]) [NC]
+  RewriteRule ^index\.html$ https://hvacprof.com.ar/ [R=301,L]
+
+  # Una sola version publica: HTTPS sin www.
+  RewriteCond %{HTTP_HOST} ^www\.hvacprof\.com\.ar$ [NC,OR]
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://hvacprof.com.ar%{REQUEST_URI} [R=301,L]
+
+  # Conserva las principales URL de la web anterior.
+  RewriteRule ^nosotros/?$ /nosotros.html [R=301,L,NC]
+  RewriteRule ^productos-y-servicios/?$ /productos.html [R=301,L,NC]
+  RewriteRule ^fabricacion-de-conductos/?$ /productos.html [R=301,L,NC]
+  RewriteRule ^montaje-de-conductos/?$ /servicios.html [R=301,L,NC]
+  RewriteRule ^trabajos-realizados/?$ /proyectos.html [R=301,L,NC]
+  RewriteRule ^contacto/?$ /contacto.html [R=301,L,NC]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-iTMmt6Wn1Qecde6q6zAGfx5kxLIyuoiPT6cFGO3IROw=' 'sha256-iLuWkmZ4TaZFqDT18P2ymFoTywDB2Yl2rGqyDN+a6Lg=' 'sha256-J0Mba2imcMKhqRQ2M4oX8RP+ucS9BL+zB74GENx60CQ=' 'sha256-ixxXTRNxp154cQ5XpmVEfzxx6pk2Z/ZUvg8TPoKVeV0=' 'sha256-W7lBi28bm0SqbDz6JMzYYuRgwhoTD9BYttxfAY9Q02I=' 'sha256-tqX2I4ob1xeAUlu5t8DtIgP3idVD4wZ35xpn/aFUxvg=' 'sha256-+0ub79iZvyAo9uWyS/ETljyqVQcohRyDw3lXvKS8XRo=' 'sha256-ws0pEbDWtR0fv3rEmjN8bqdtoBI9j4EqJ1zhJ7qcyRA=' 'sha256-Rar1jxQDY/cCw8qouhEc/aXmssEVB017R/sY+MNDmdM=' 'sha256-QoOWOubCRjrY7sHnDkqN2Ow1sWhKxlmaKNE8PEugyH8=' 'sha256-da3rBQ2OqOzgbUY1ZaAL0zH9klKaGdomZiY4LOHAehE=' 'sha256-E6EXtwoTLvLOo4a6E5JKmUWq9ZhK3ZWIxOqYGbkDIj4=' 'sha256-0LLaRMe6ExkXag5B5Qmn1PvA26aAUu6em+62VxcBuR8='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; frame-ancestors 'none'; manifest-src 'self'; upgrade-insecure-requests"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Resource-Policy "same-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.php$">
+    Header always set Cache-Control "no-store, max-age=0"
+  </FilesMatch>
+
+  <FilesMatch "^(?:llms\.txt|robots\.txt|sitemap\.xml)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+  <FilesMatch "^site\.[a-f0-9]{12}\.(?:css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "^(?:404\.html|enviar-contacto\.php)$">
+    Header always set X-Robots-Tag "noindex, nofollow"
+  </FilesMatch>
+
+  <FilesMatch "\.(?:png|jpg|jpeg|gif|svg|webp|ico|woff|woff2)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+</IfModule>
+
+<FilesMatch "(^\.|\.bak$|\.config$|\.dist$|\.env$|\.ini$|\.log$|\.md$|\.sql$|\.wpress$|\.zip$|\.tar$|\.gz$|\.pem$|\.key$|\.mjs$|\.ps1$|package(?:-lock)?\.json$)">
+  Require all denied
+</FilesMatch>
+
+LimitRequestBody 32768
+AddType font/woff2 .woff2
+AddType image/webp .webp

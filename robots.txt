@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /enviar-contacto.php
+Disallow: /404.html
+
+Sitemap: https://hvacprof.com.ar/sitemap.xml

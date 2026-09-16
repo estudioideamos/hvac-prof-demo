@@ -1,0 +1,27 @@
+name: Validate website
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - run: npm ci --ignore-scripts
+      - run: node --check script.js
+      - run: php -l enviar-contacto.php
+      - run: npm run build && npm test
+      - run: npm run test:contact
+        env:
+          PHP_BINARY: php
+      - run: npm audit --audit-level=high

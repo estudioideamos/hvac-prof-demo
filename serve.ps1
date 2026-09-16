@@ -27,6 +27,9 @@ try {
         ".jpg" { $context.Response.ContentType = "image/jpeg" }
         ".jpeg" { $context.Response.ContentType = "image/jpeg" }
         ".svg" { $context.Response.ContentType = "image/svg+xml; charset=utf-8" }
+        ".webmanifest" { $context.Response.ContentType = "application/manifest+json; charset=utf-8" }
+        ".webp" { $context.Response.ContentType = "image/webp" }
+        ".xml" { $context.Response.ContentType = "application/xml; charset=utf-8" }
         default { $context.Response.ContentType = "application/octet-stream" }
       }
 

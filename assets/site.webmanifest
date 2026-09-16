@@ -1,8 +1,8 @@
 {
   "name": "HVAC PROF",
   "short_name": "HVAC PROF",
-  "description": "Especialistas en conductos de aire acondicionado, ventilacion y extraccion.",
-  "start_url": "./index.html",
+  "description": "Especialistas en conductos de aire acondicionado, ventilación y extracción.",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#061015",
   "theme_color": "#061015",

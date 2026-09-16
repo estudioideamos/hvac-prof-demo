@@ -1,0 +1,13 @@
+{
+  "name": "hvac-prof-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HVAC PROF website - developed by Estudio Ideamos",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node tools/package.mjs",
+    "test": "node tools/validate-package.mjs",
+    "test:contact": "node tools/test-contact.mjs"
+  },
+  "devDependencies": { "jszip": "3.10.2", "sharp": "0.35.4", "playwright": "1.63.0" }
+}

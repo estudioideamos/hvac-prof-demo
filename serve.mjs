@@ -3,7 +3,7 @@ import { extname, join, normalize } from "node:path";
 import { createServer } from "node:http";
 
 const root = process.cwd();
-const port = 4173;
+const port = Number(process.argv[2] || 4173);
 
 const mimeTypes = {
   ".css": "text/css; charset=utf-8",
@@ -13,10 +13,14 @@ const mimeTypes = {
   ".js": "application/javascript; charset=utf-8",
   ".png": "image/png",
   ".svg": "image/svg+xml; charset=utf-8",
+  ".webmanifest": "application/manifest+json; charset=utf-8",
+  ".webp": "image/webp",
+  ".xml": "application/xml; charset=utf-8",
 };
 
 createServer((req, res) => {
-  const requestPath = decodeURIComponent(req.url === "/" ? "/index.html" : req.url || "/index.html");
+  const pathname = new URL(req.url || '/', 'http://localhost').pathname;
+  const requestPath = decodeURIComponent(pathname === '/' ? '/index.html' : pathname);
   const safePath = normalize(requestPath).replace(/^([.][.][/\\])+/, "");
   const filePath = join(root, safePath);
 
