@@ -28,6 +28,8 @@ About apunta al dominio definitivo. GitHub Pages está deshabilitado para evitar
 
 ## Verificación
 
+- Revision OWASP Top 10:2025 y estado DNS/PHP: `AUDITORIA-OWASP-2025.md` (29/09/2026). No confundir pruebas al servidor de origen con disponibilidad publica mientras DNS falla.
+
 - `node tools/audit.mjs after`: navegador desktop/mobile, páginas, recursos, datos estructurados, política CSP, lightbox y contenido sin JavaScript. Guarda evidencias en `.audit/`.
 - `node tools/test-contact.mjs`: validaciones y controles antiabuso con PHP local en `.audit/php/php.exe`. El correo se simula exclusivamente en una copia aislada. No se envían mensajes reales.
 - `tools/optimize.mjs` documenta la migración inicial de fuentes y recursos. No volver a ejecutarlo sobre las páginas ya migradas.

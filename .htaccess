@@ -11,6 +11,8 @@ ErrorDocument 404 /404.html
   # Private and development paths never belong to the public site.
   RewriteRule (^|/)\.(?!well-known(?:/|$)) - [F,L]
   RewriteRule ^(?:tools|node_modules|repositories)(?:/|$) - [F,L,NC]
+  # The contact handler is the only public executable endpoint.
+  RewriteRule ^(?!enviar-contacto\.php$).*\.php(?:/|$) - [F,L,NC]
   RewriteCond %{REQUEST_METHOD} !^(GET|HEAD|POST)$
   RewriteRule ^ - [R=405,L]
   RewriteCond %{THE_REQUEST} \s/+index\.html(?:[?\s]) [NC]
@@ -39,6 +41,7 @@ ErrorDocument 404 /404.html
   Header always set Strict-Transport-Security "max-age=31536000"
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "DENY"
+  Header always unset X-Powered-By
 
   <FilesMatch "\.html$">
     Header set Cache-Control "no-cache, must-revalidate"
@@ -75,7 +78,7 @@ ErrorDocument 404 /404.html
   ExpiresByType image/svg+xml "access plus 30 days"
 </IfModule>
 
-<FilesMatch "(^\.|\.bak$|\.config$|\.dist$|\.env$|\.ini$|\.log$|\.md$|\.sql$|\.wpress$|\.zip$|\.tar$|\.gz$|\.pem$|\.key$|\.mjs$|\.ps1$|package(?:-lock)?\.json$)">
+<FilesMatch "(?i)(^\.|\.(?:bak|old|orig|swp|config|dist|env|ini|log|md|sql|wpress|zip|tar|gz|7z|rar|pem|key|p12|pfx|mjs|ps1|map)$|~$|package(?:-lock)?\.json$)">
   Require all denied
 </FilesMatch>
 
