@@ -12,6 +12,12 @@ const HVAC_RATE_LIMIT = 5;
 const HVAC_RATE_WINDOW = 900;
 const HVAC_GLOBAL_RATE_LIMIT = 60;
 
+// Log operational codes only, never submitted content or personal information.
+set_exception_handler(static function (\Throwable $error): void {
+    error_log('[HVAC contact] unhandled_failure');
+    respond(false, 'El formulario no está disponible. Contactanos por WhatsApp.', 503);
+});
+
 function wants_json(): bool
 {
     return strpos($_SERVER['HTTP_ACCEPT'] ?? '', 'application/json') !== false;
@@ -22,6 +28,7 @@ function respond(bool $success, string $message, int $status = 200): void
     http_response_code($status);
     header('Cache-Control: no-store, max-age=0');
     header('X-Content-Type-Options: nosniff');
+    if ($status >= 500) error_log('[HVAC contact] operational_failure status=' . $status);
 
     if (wants_json()) {
         header('Content-Type: application/json; charset=UTF-8');
@@ -71,7 +78,7 @@ function request_is_same_origin(): bool
     return true;
 }
 
-function rate_limit_exceeded(): bool
+function rate_limit_exceeded(bool $requestBudget = false): bool
 {
     $ipAddress = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
     // Private, bounded storage outside public_html; never create one file per IP.
@@ -79,7 +86,8 @@ function rate_limit_exceeded(): bool
     if (is_link($directory) || (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory))) {
         respond(false, 'El formulario no está disponible. Contactanos por WhatsApp.', 503);
     }
-    $rateFile = $directory . '/contact-rate.json';
+    $window = $requestBudget ? 60 : HVAC_RATE_WINDOW;
+    $rateFile = $directory . ($requestBudget ? '/request-rate.json' : '/contact-rate.json');
     if (is_link($rateFile)) respond(false, 'El formulario no está disponible.', 503);
     $now = time();
     $handle = @fopen($rateFile, 'c+');
@@ -90,11 +98,14 @@ function rate_limit_exceeded(): bool
     @chmod($rateFile, 0600);
 
     try {
-        if (!flock($handle, LOCK_EX)) {
+        if (!flock($handle, LOCK_EX | LOCK_NB)) {
             respond(false, 'El formulario no está disponible. Contactanos por WhatsApp.', 503);
         }
 
-        $contents = stream_get_contents($handle);
+        $size = fstat($handle)['size'] ?? 0;
+        if ($size > 131072) respond(false, 'El formulario no está disponible.', 503);
+        $contents = stream_get_contents($handle, 131073);
+        if ($contents === false) respond(false, 'El formulario no está disponible.', 503);
         $timestamps = json_decode($contents ?: '[]', true);
         if (!is_array($timestamps)) {
             respond(false, 'El formulario no está disponible. Contactanos por WhatsApp.', 503);
@@ -102,7 +113,7 @@ function rate_limit_exceeded(): bool
 
         $timestamps = array_values(array_filter(
             $timestamps,
-            static fn ($record): bool => is_array($record) && isset($record['time'], $record['ip']) && is_int($record['time']) && $record['time'] > $now - HVAC_RATE_WINDOW
+            static fn ($record): bool => is_array($record) && isset($record['time'], $record['ip']) && is_int($record['time']) && $record['time'] > $now - $window
         ));
 
         $ipHash = hash('sha256', $ipAddress);
@@ -111,14 +122,16 @@ function rate_limit_exceeded(): bool
         $emailAttempts = count(array_filter($timestamps, static fn ($record): bool => ($record['email'] ?? '') === $emailHash));
         $duplicate = count(array_filter($timestamps, static fn ($record): bool => ($record['fingerprint'] ?? '') === $fingerprint));
         $ipAttempts = count(array_filter($timestamps, static fn ($record): bool => $record['ip'] === $ipHash));
-        if ($duplicate > 0 || $emailAttempts >= 3 || $ipAttempts >= HVAC_RATE_LIMIT || count($timestamps) >= HVAC_GLOBAL_RATE_LIMIT) {
-            header('Retry-After: ' . HVAC_RATE_WINDOW);
+        if ((!$requestBudget && ($duplicate > 0 || $emailAttempts >= 3))
+            || $ipAttempts >= ($requestBudget ? 20 : HVAC_RATE_LIMIT)
+            || count($timestamps) >= ($requestBudget ? 200 : HVAC_GLOBAL_RATE_LIMIT)) {
+            header('Retry-After: ' . $window);
             return true;
         }
 
-        $timestamps[] = ['time' => $now, 'ip' => $ipHash, 'email' => $emailHash, 'fingerprint' => $fingerprint];
-        ftruncate($handle, 0);
-        rewind($handle);
+        $timestamps[] = $requestBudget ? ['time' => $now, 'ip' => $ipHash]
+            : ['time' => $now, 'ip' => $ipHash, 'email' => $emailHash, 'fingerprint' => $fingerprint];
+        if (!ftruncate($handle, 0) || !rewind($handle)) respond(false, 'El formulario no está disponible.', 503);
         $encoded = json_encode($timestamps);
         if (fwrite($handle, $encoded) !== strlen($encoded) || !fflush($handle)) {
             respond(false, 'El formulario no está disponible. Contactanos por WhatsApp.', 503);
@@ -144,13 +157,31 @@ if (!request_is_same_origin()) {
     respond(false, 'No se pudo validar el origen de la consulta.', 403);
 }
 
+if (rate_limit_exceeded(true)) {
+    respond(false, 'Recibimos demasiados intentos. Esperá un minuto.', 429);
+}
+
+$contentType = strtolower(trim(explode(';', $_SERVER['CONTENT_TYPE'] ?? '')[0]));
+if (!in_array($contentType, ['application/x-www-form-urlencoded', 'multipart/form-data'], true)) {
+    respond(false, 'Formato de consulta no admitido.', 415);
+}
+if (!empty($_FILES)) respond(false, 'No se admiten archivos adjuntos en este formulario.', 422);
+foreach (['nombre' => 100, 'empresa' => 120, 'email' => 180, 'telefono' => 50,
+    'consulta' => 40, 'plazo' => 120, 'mensaje' => 4000, 'website' => 200] as $field => $limit) {
+    $value = $_POST[$field] ?? '';
+    if (!is_string($value) || preg_match('//u', $value) !== 1
+        || preg_match_all('/./us', $value) > $limit) {
+        respond(false, 'Revisá el formato y la extensión de los campos.', 422);
+    }
+}
+
 if (clean_field('website', 200) !== '') {
     respond(true, 'Gracias. Recibimos tu consulta y te responderemos a la brevedad.');
 }
 
 $startedAt = filter_input(INPUT_POST, 'form_started_at', FILTER_VALIDATE_INT);
 if (is_int($startedAt) && $startedAt > 0 && time() - $startedAt < 3) {
-    respond(true, 'Gracias. Recibimos tu consulta y te responderemos a la brevedad.');
+    respond(false, 'Esperá unos segundos y volvé a enviar la consulta.', 422);
 }
 
 $name = clean_field('nombre', 100);
@@ -219,7 +250,7 @@ $headers = implode("\r\n", [
 
 $sent = function_exists('mail') && @mail(HVAC_RECIPIENT, $subject, $body, $headers);
 if (!$sent) {
-    respond(false, 'No pudimos enviar la consulta. Por favor, intentá nuevamente.', 500);
+    respond(false, 'No pudimos enviar la consulta. Contactanos por WhatsApp.', 503);
 }
 
 respond(true, 'Gracias. Recibimos tu consulta y te responderemos a la brevedad.');

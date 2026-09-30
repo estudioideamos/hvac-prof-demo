@@ -7,9 +7,11 @@ const require = createRequire(import.meta.url);
 const deps = process.env.HVAC_NODE_MODULES || path.resolve('node_modules');
 const JSZip = require(path.join(deps, 'jszip'));
 const digest = input=>createHash('sha256').update(input).digest('hex').slice(0,12);
-const fonts=fs.readFileSync('assets/fonts/fonts.css','utf8').replaceAll('assets/fonts/','fonts/');
-const css=fonts+'\n'+fs.readFileSync('styles.css','utf8');
-const js=fs.readFileSync('script.js','utf8');
+// Stable hashes across Windows and Linux checkouts.
+const readText=file=>fs.readFileSync(file,'utf8').replace(/\r\n/g,'\n');
+const fonts=readText('assets/fonts/fonts.css').replaceAll('assets/fonts/','fonts/');
+const css=fonts+'\n'+readText('styles.css');
+const js=readText('script.js');
 const cssPath=`assets/site.${digest(css)}.css`;
 const jsPath=`assets/site.${digest(js)}.js`;
 fs.writeFileSync(cssPath,css);fs.writeFileSync(jsPath,js);
