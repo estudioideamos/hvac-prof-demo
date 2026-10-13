@@ -762,13 +762,13 @@ h3 {
   display: inline-grid;
   place-items: center;
   position: relative;
-  width: 102px;
-  height: 102px;
+  width: 100px;
+  height: 100px;
   margin-bottom: 22px;
-  border-radius: 28px;
+  border-radius: 24px;
   border: 1px solid rgba(138, 240, 255, 0.22);
   background:
-    radial-gradient(circle at 50% 34%, rgba(56, 211, 230, 0.26), transparent 52%),
+    radial-gradient(circle at 0 0, rgba(56, 211, 230, 0.12), transparent 75%),
     linear-gradient(180deg, rgba(14, 39, 47, 0.98), rgba(7, 20, 24, 0.95));
   color: var(--accent-2);
   box-shadow:
@@ -936,29 +936,57 @@ h3 {
 }
 
 .preview-icon::before {
-  inset: 10px;
-  border: 1px solid rgba(138, 240, 255, 0.12);
+  inset: 7px;
+  border: 1px solid rgba(138, 240, 255, 0.06);
 }
 
 .preview-icon::after {
-  inset: 24px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 211, 230, 0.22), transparent 72%);
-  filter: blur(8px);
-  opacity: 0.9;
+  content: none;
 }
 
 .preview-icon svg {
   position: relative;
   z-index: 1;
-  width: 56px;
-  height: 56px;
+  width: 66px;
+  height: 66px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.7;
   stroke-linecap: round;
   stroke-linejoin: round;
-  filter: drop-shadow(0 0 12px rgba(56, 211, 230, 0.22));
+  filter: none;
+}
+
+/* Two-tone technical pictograms: broad silhouettes stay readable at small sizes. */
+.hvac-icon .icon-surface {
+  fill: rgba(96, 223, 241, 0.12);
+  stroke: currentColor;
+}
+
+.hvac-icon .icon-detail {
+  stroke: #d9f8fc;
+}
+
+.preview-icon svg.hvac-icon {
+  stroke-width: 1.25;
+}
+
+.mini-icon svg.hvac-icon {
+  width: 42px;
+  height: 42px;
+  stroke-width: 1.5;
+}
+
+.hero-aside-icon svg.hvac-icon {
+  width: 34px;
+  height: 34px;
+  stroke-width: 1.6;
+}
+
+.strip-icon svg.hvac-icon {
+  width: 30px;
+  height: 30px;
+  stroke-width: 1.7;
 }
 
 .preview-icon svg .icon-fill {
@@ -2351,8 +2379,8 @@ body.lightbox-open {
   }
 
   .preview-icon svg {
-    width: 46px;
-    height: 46px;
+    width: 58px;
+    height: 58px;
   }
 
   .about-visual {
