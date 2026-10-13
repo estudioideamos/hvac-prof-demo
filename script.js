@@ -328,7 +328,7 @@ if (zoomableImages.length > 0) {
     <div class="image-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
       <button class="image-lightbox-close" type="button" aria-label="Cerrar imagen ampliada" data-lightbox-close>&times;</button>
       <div class="image-lightbox-frame">
-        <img alt="" />
+        <img alt="" width="1200" height="800" />
       </div>
       <p class="image-lightbox-caption"></p>
     </div>
@@ -355,6 +355,8 @@ if (zoomableImages.length > 0) {
 
   const openLightbox = (image) => {
     lastFocusedElement = image;
+    lightboxImage.width = image.naturalWidth || Number(image.getAttribute('width')) || 1200;
+    lightboxImage.height = image.naturalHeight || Number(image.getAttribute('height')) || 800;
     lightboxImage.setAttribute("src", image.getAttribute('src') || image.currentSrc);
     lightboxImage.setAttribute("alt", image.alt || "Imagen ampliada");
     lightboxCaption.textContent = image.alt || "";

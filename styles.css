@@ -124,6 +124,10 @@ h3 {
   font-size: clamp(1.75rem, 2vw, 2.2rem);
 }
 
+.home-intro-title {
+  font-size: clamp(1.75rem, 2vw, 2.2rem);
+}
+
 .page-shell {
   width: min(calc(100% - 32px), var(--max-width));
   margin: 0 auto;
@@ -1022,9 +1026,22 @@ h3 {
 }
 
 .union-visual img {
+  display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 1.72 / 1;
-  object-fit: cover;
+  object-fit: contain;
+  background: #fff;
+}
+
+.technical-gallery .project-gallery-media {
+  background: #fff;
+}
+
+.technical-gallery .project-gallery-media img,
+.technical-gallery .project-gallery-card:hover .project-gallery-media img {
+  object-fit: contain;
+  transform: none;
 }
 
 .union-detail-layout {

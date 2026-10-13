@@ -2,6 +2,10 @@
 
 Fecha: 29/09/2026. HVAC PROF. Desarrollado por Estudio Ideamos.
 
+**Actualizacion 13/10/2026:** DNS y PHP ya resueltos; entrega real de correo comprobada
+el 30/09. Este informe conserva la evidencia original. El estado vigente y los
+pendientes reales estan en [CIERRE-2026-10-13.md](CIERRE-2026-10-13.md).
+
 Revision acotada de codigo, dependencias, configuracion del sitio y pruebas
 funcionales. No es certificacion, pentest completo ni garantia de ausencia de fallos.
 
