@@ -80,7 +80,7 @@ const titles = {
   'union-marco-pestana.html': 'Unión Marco-Pestaña para conductos HVAC | HVAC PROF',
   'union-zeta-corredera.html': 'Unión Zeta-Corredera para conductos | HVAC PROF',
 };
-const org = { '@type': 'Organization', '@id': 'https://hvacprof.com.ar/#organization', name: 'HVAC PROF', url: 'https://hvacprof.com.ar/', logo: 'https://hvacprof.com.ar/assets/images/logo-hvacprof.png', telephone: '+54 9 11 2511 2777', email: 'info@hvacprof.com.ar', address: { '@type': 'PostalAddress', addressLocality: 'Quilmes', addressRegion: 'Buenos Aires', addressCountry: 'AR' }, sameAs: ['https://www.instagram.com/hvacprof/', 'https://www.linkedin.com/company/hvacprof/'] };
+const org = { '@type': 'Organization', '@id': 'https://hvacprof.com.ar/#organization', name: 'HVAC PROF', url: 'https://hvacprof.com.ar/', logo: 'https://hvacprof.com.ar/assets/images/logo-hvacprof.png', telephone: '+54 9 11 7097-2004', email: 'info@hvacprof.com.ar', address: { '@type': 'PostalAddress', addressLocality: 'Quilmes', addressRegion: 'Buenos Aires', addressCountry: 'AR' }, sameAs: ['https://www.instagram.com/hvacprof/', 'https://www.linkedin.com/company/hvacprof/'] };
 const hashes = [];
 const summaries = [];
 const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });
@@ -146,7 +146,7 @@ try {
   }
 } finally {await browser.close();}
 fs.writeFileSync('.audit/schema-hashes.json',JSON.stringify(hashes));
-fs.writeFileSync('llms.txt', '# HVAC PROF\n\n> Fabricación y montaje de conductos de aire acondicionado, ventilación y extracción.\n\n## Empresa y contacto\n\nHVAC PROF tiene su ubicación en Quilmes, provincia de Buenos Aires, Argentina. Ofrece fabricación propia, montaje de conductos, piezas estándares y especiales, sistemas de unión e insumos de montaje.\n\n- Sitio oficial: https://hvacprof.com.ar/\n- Email: info@hvacprof.com.ar\n- WhatsApp: +54 9 11 2511 2777\n- Los presupuestos y las especificaciones se confirman mediante consulta técnica.\n\n## Páginas\n\n'+summaries.map(p=>`- [${p.name}](${p.canonical}): ${p.description}`).join('\n')+'\n');
+fs.writeFileSync('llms.txt', '# HVAC PROF\n\n> Fabricación y montaje de conductos de aire acondicionado, ventilación y extracción.\n\n## Empresa y contacto\n\nHVAC PROF tiene su ubicación en Quilmes, provincia de Buenos Aires, Argentina. Ofrece fabricación propia, montaje de conductos, piezas estándares y especiales, sistemas de unión e insumos de montaje.\n\n- Sitio oficial: https://hvacprof.com.ar/\n- Email: info@hvacprof.com.ar\n- WhatsApp: +54 9 11 7097-2004\n- Los presupuestos y las especificaciones se confirman mediante consulta técnica.\n\n## Páginas\n\n'+summaries.map(p=>`- [${p.name}](${p.canonical}): ${p.description}`).join('\n')+'\n');
 // The sitemap omits speculative lastmod dates; update dates only after verified content changes.
 fs.writeFileSync('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+summaries.map(p=>`  <url><loc>${p.canonical}</loc></url>`).join('\n')+'\n</urlset>\n');
 console.log(JSON.stringify({pages:summaries.length,fonts:fontFiles.size,responsiveImages:Object.keys(responsive).length}));
