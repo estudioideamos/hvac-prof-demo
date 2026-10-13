@@ -2,6 +2,11 @@
 
 Fecha: 15 de septiembre de 2026. Desarrollado por Estudio Ideamos.
 
+**Actualizacion 13/10/2026:** consultar [CIERRE-2026-10-13.md](CIERRE-2026-10-13.md).
+Las versiones PHP y pruebas listadas debajo son historicas. Dominio/PHP y recepcion
+real del formulario ya verificados; los intentos actuales de PSI/Lighthouse tuvieron
+errores y no permiten informar un puntaje final de rendimiento.
+
 ## Estado de entrega
 
 Mejoras publicadas por SSH en puerto 9022 el 15/09/2026. ZIP: `HVAC-PROF-public_html-optimizado.zip`. Backup previo privado conservado fuera de public_html. PHP web actualizado de 7.4 a 8.4.24 y verificado mediante diagnóstico temporal, eliminado después. Escritura privada correcta y permisos de recursos corregidos. Pruebas públicas de páginas, robots, sitemap, llms.txt, redirección, 404 y bloqueos correctas; home mobile/desktop sin errores ni desbordes. Evidencia: `.audit/live-verification.json`.

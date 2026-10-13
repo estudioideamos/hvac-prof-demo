@@ -4,6 +4,15 @@
 
 Sitio institucional de https://hvacprof.com.ar/, desarrollado por [Estudio Ideamos](https://ideamos.com.ar/).
 
+## Estado actual (13/10/2026)
+
+Consultar [CIERRE-2026-10-13.md](CIERRE-2026-10-13.md) para el estado vigente.
+Dominio operativo, PHP 8.4.26 comprobado, formulario recibido realmente el 30/09,
+telefono +54 9 11 7097-2004 y nueva iconografia publicados. Se verificaron SEO tecnico,
+SPF/DKIM y restauracion aislada; se agrego backup diario privado del sitio.
+Search Console/Bing, 2FA, politica de privacidad aprobada y metricas PageSpeed/CWV
+siguen con limitaciones documentadas. Los informes de septiembre son historicos.
+
 ## Plataforma
 
 13 páginas HTML, una página 404, CSS y JavaScript propios. El formulario usa PHP en cPanel. El sitio no necesita WordPress, base de datos, Node.js ni paquetes de terceros en producción. GitHub Pages fue el entorno de demo y no puede ejecutar el formulario PHP.
